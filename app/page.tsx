@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import bg from "./img/unseen-studio-s9CC2SKySJM-unsplash.jpg";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Component() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,8 +77,30 @@ export default function Component() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="bg-sky-50 py-20">
-        <div className="container mx-auto px-4 text-center">
+      <section id="home" className="relative h-screen">
+        <Image
+          src={bg.src} // Replace with your image
+          alt="Hero Background"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          className="absolute inset-0"
+        />
+        <div className="relative flex items-center justify-center h-full bg-black bg-opacity-50 flex-col space-y-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
+            Welcome to Siddharth Study Point
+          </h1>
+          <p className="text-xl text-white">
+            Empowering students for academic excellence since 2005
+          </p>
+          <Link
+            href="#contact"
+            className="bg-sky-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-sky-700 transition duration-300"
+          >
+            Enroll Now
+          </Link>
+        </div>
+        {/* <div className="container mx-auto px-4 text-center ">
           <h1 className="text-4xl md:text-5xl font-bold text-sky-800 mb-4">
             Welcome to Siddharth Study Point
           </h1>
@@ -88,7 +113,7 @@ export default function Component() {
           >
             Enroll Now
           </Link>
-        </div>
+        </div> */}
       </section>
 
       {/* Courses Section */}
@@ -112,7 +137,7 @@ export default function Component() {
               </button>
               {openAccordion === "grades6-10" && (
                 <div className="px-4 py-3 bg-white">
-                  <ul className="list-disc list-inside">
+                  <ul className="list-disc list-inside divide-y-2 list-style-none">
                     <li>Mathematics</li>
                     <li>Science</li>
                     <li>English</li>
@@ -165,16 +190,18 @@ export default function Component() {
                 knowledgeable.&quot;
               </p>
               <p className="font-semibold text-sky-800">
-                - Priya S., Grade 12 Commerce
+                - Tarun T., Ex Student
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <p className="text-gray-600 mb-4">
-                &quot;I&apos;ve been studying here since 8th grade, and it has
-                been an amazing journey. The study materials and practice tests
-                are top-notch.&quot;
+                &quot;I studied here from 6th grade, and it had been an amazing
+                journey. The study materials and practice tests were
+                top-notch.&quot;
               </p>
-              <p className="font-semibold text-sky-800">- Rahul M., Grade 10</p>
+              <p className="font-semibold text-sky-800">
+                - Rohan T., Ex Student
+              </p>
             </div>
           </div>
         </div>
@@ -209,7 +236,6 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contact Form */}
       <section id="contact" className="bg-sky-50 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-sky-800 mb-8 text-center">
@@ -261,12 +287,20 @@ export default function Component() {
                 required
               ></textarea>
             </div>
-            <button
-              type="submit"
-              className="w-full bg-sky-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-sky-700 transition duration-300"
-            >
-              Send Message
-            </button>
+            <div className="space-y-2">
+              <Button type="submit" className="w-full" variant={"ghost"}>
+                Send Message
+              </Button>
+              <Button
+                type="button"
+                variant={"secondary"}
+                size={"lg"}
+                className="w-full"
+              >
+                <MessageSquare className="size-4 mr-4" />
+                Chat on Whatsapp
+              </Button>
+            </div>
           </form>
         </div>
       </section>
@@ -274,7 +308,7 @@ export default function Component() {
       {/* Footer */}
       <footer className="bg-sky-800 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 Siddharth Study Point. All rights reserved.</p>
+          <p>&copy; 2024 Siddharth Study Point. All rights reserved.</p>
         </div>
       </footer>
     </div>
